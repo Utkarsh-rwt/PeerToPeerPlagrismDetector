@@ -5,6 +5,13 @@ A Python-based web application that detects similarity between student submissio
 The app is designed for academic use and can integrate with Google Classroom to fetch submissions automatically.
 
 ---
+## Screenshots
+<img width="1887" height="947" alt="image" src="https://github.com/user-attachments/assets/3b860fc7-1e5d-4e46-9dff-2faff12ad64b" />
+<img width="1913" height="954" alt="Screenshot 2026-04-02 121941" src="https://github.com/user-attachments/assets/1558d56a-2791-4ebc-9cba-568ddc5a6cab" />
+<img width="1914" height="959" alt="Screenshot 2026-04-02 121916" src="https://github.com/user-attachments/assets/a7953175-ad98-4df8-91d7-0fe660f86335" />
+
+
+
 
 ## 🚀 Features
 
