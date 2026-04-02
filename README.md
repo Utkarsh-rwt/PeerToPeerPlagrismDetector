@@ -1,55 +1,42 @@
-# Peer-to-Peer Plagiarism Detector
+Peer-to-Peer Plagiarism Detector
 
-A Python-based web application that detects similarity between student submissions using Natural Language Processing (NLP). The system compares uploaded documents and calculates plagiarism scores using TF-IDF vectorization and cosine similarity.
+A Python-based web application built using Flask and Natural Language Processing (NLP) techniques to detect similarity between student submissions.
 
-The app is designed for academic use and can integrate with Google Classroom to fetch submissions automatically.
+The system compares uploaded documents and computes plagiarism scores using TF-IDF vectorization and cosine similarity, enabling efficient peer-to-peer submission analysis for academic environments.
 
----
-## Screenshots
-<img width="1887" height="947" alt="image" src="https://github.com/user-attachments/assets/3b860fc7-1e5d-4e46-9dff-2faff12ad64b" />
-<img width="1913" height="954" alt="Screenshot 2026-04-02 121941" src="https://github.com/user-attachments/assets/1558d56a-2791-4ebc-9cba-568ddc5a6cab" />
-<img width="1914" height="959" alt="Screenshot 2026-04-02 121916" src="https://github.com/user-attachments/assets/a7953175-ad98-4df8-91d7-0fe660f86335" />
+It also supports PDF text extraction and can be extended with Google Classroom integration for automated submission retrieval.
 
+🌐 Live Demo
 
+Application Link:
+https://peertopeerplagrismdetector.onrender.com
 
-
-## 🚀 Features
-
-* Upload and compare multiple documents
-* Automatic text cleaning & preprocessing
-* TF-IDF similarity scoring
-* Cosine similarity plagiarism detection
-* PDF text extraction
-* Optional Google Classroom integration
-* Clean web dashboard interface
-
----
-
-## 🛠 Tech Stack
-
-Frontend:
-
-* HTML / CSS / JavaScript
-
-Backend:
-
-* Python
-* Flask
-
-Libraries:
-
-* Scikit-learn
-* NumPy
-* PDF processing tools
-
-Deployment:
-
-* Render
-
----
-
-## 📂 Project Structure
-
+🚀 Features
+Upload and compare multiple documents
+Automatic text extraction from PDF files
+Text cleaning and preprocessing pipeline
+TF-IDF based feature extraction
+Cosine similarity score calculation
+Plagiarism percentage display
+Clean and responsive web dashboard
+Optional Google Classroom integration
+Cloud deployment support via Render
+🛠 Tech Stack
+Frontend
+HTML
+CSS
+JavaScript
+Backend
+Python
+Flask
+Libraries
+scikit-learn
+NumPy
+PDF processing tools
+Deployment
+Render
+Gunicorn
+📂 Project Structure
 peer-plagiarism/
 │
 ├── app.py
@@ -58,134 +45,117 @@ peer-plagiarism/
 ├── templates/
 ├── static/
 └── README.md
-
----
-
-## ⚙ Installation (Local Setup)
-
-### 1. Clone the repository
-
+⚙ Installation (Local Setup)
+1. Clone the Repository
 git clone https://github.com/your-username/peer-plagiarism.git
 cd peer-plagiarism
-
-### 2. Create virtual environment
-
+2. Create Virtual Environment
 python -m venv venv
 
 Activate environment:
 
-Windows:
+Windows
+
 venv\Scripts\activate
 
-Mac/Linux:
+Mac/Linux
+
 source venv/bin/activate
-
-### 3. Install dependencies
-
+3. Install Dependencies
 pip install -r requirements.txt
-
-### 4. Run the app
-
+4. Run the Application
 python app.py
 
-Open browser:
+Open in browser:
 
 http://127.0.0.1:5000
+🌐 Deployment (Render)
+Step 1 — Prepare Required Files
 
----
-
-## 🌐 Deployment (Render)
-
-### Step 1 — Prepare files
-
-Create requirements.txt:
+Generate dependencies file:
 
 pip freeze > requirements.txt
 
 Create Procfile:
 
 web: gunicorn app:app
-
----
-
-### Step 2 — Push to GitHub
-
+Step 2 — Push to GitHub
 git init
 git add .
 git commit -m "deploy app"
 git push
+Step 3 — Deploy on Render
+Go to Render
+Login with GitHub
+Create New Web Service
+Select repository
 
----
+Build Command
 
-### Step 3 — Deploy on Render
-
-1. Go to https://render.com
-2. Login with GitHub
-3. New → Web Service
-4. Select repository
-
-Settings:
-
-Build command:
 pip install -r requirements.txt
 
-Start command:
+Start Command
+
 gunicorn app:app
 
-Click **Deploy**.
+Click Deploy
 
-Render will generate a public URL:
+🔐 Google Classroom Integration (Optional)
 
-https://your-app-name.onrender.com
-
----
-
-## 🔐 Google Classroom Integration (Optional)
-
-If using OAuth:
-
-Update redirect URI in Google Cloud Console:
+For OAuth integration, update the redirect URI in Google Cloud Console:
 
 https://your-app-name.onrender.com/callback
+📊 Working Principle
 
----
+The plagiarism detection workflow follows these steps:
 
-## 📊 How Plagiarism Detection Works
+Extract text from uploaded documents
+Perform text cleaning and normalization
+Convert text into TF-IDF vectors
+Compute cosine similarity
+Generate plagiarism percentage scores
+Similarity Formula
 
-1. Extract text from documents
-2. Clean and normalize text
-3. Convert to TF-IDF vectors
-4. Compute cosine similarity
-5. Display plagiarism percentage
+cos
+⁡
+(
+𝜃
+)
+=
+𝐴
+⋅
+𝐵
+∥
+𝐴
+∥
+∥
+𝐵
+∥
+cos(θ)=
+∥A∥∥B∥
+A⋅B
+	​
 
----
 
-## 🧠 Future Improvements
+🧠 Future Improvements
+AI-based semantic similarity detection
+Teacher analytics dashboard
+Report export system
+Classroom-wide live sync
+Historical plagiarism database
+Student submission insights
+🤝 Contributing
 
-* Real-time classroom sync
-* AI-based semantic comparison
-* Report export system
-* Teacher dashboard analytics
+Pull requests are welcome.
 
----
+For major changes, please open an issue first to discuss the proposed improvements.
 
+📜 License
 
-## LINK
-https://peertopeerplagrismdetector.onrender.com
+This project is intended for educational and academic use.
 
+Feel free to modify and extend it.
 
-## 🤝 Contributing
+✨ Author
 
-Pull requests are welcome. For major changes, open an issue first to discuss what you’d like to improve.
-
----
-
-## 📜 License
-
-This project is for educational purposes. Modify and use freely.
-
----
-
-## ✨ Author
-
-Developed as a peer-to-peer plagiarism detection tool to support academic integrity.
+Developed as a peer-to-peer plagiarism detection system to support academic integrity and automated submission analysis.
