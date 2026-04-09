@@ -22,6 +22,35 @@
             margin-bottom: 25px;
         }
 
+        /* 🔥 LOADER CSS */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #444;
+    border-top: 5px solid #00ffcc;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
         .assignment {
             background: white;
             padding: 18px 22px;
@@ -109,7 +138,7 @@
             <div class="assignment-title">
                 {{ a.title }}
             </div>
-            <a href="/submissions/{{ course_id }}/{{ a.id }}">
+            <a href="/submissions/{{ course_id }}/{{ a.id }}" onclick="showLoader(event, this.href)">
                 Check Plagiarism →
             </a>
         </div>
@@ -120,6 +149,24 @@
     </footer>
 
 </div>
+    <!-- 🔥 LOADER START -->
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>Checking plagiarism...</p>
+    </div>
+    <!-- 🔥 LOADER END -->
+<script>
+function showLoader(event, url) {
+  event.preventDefault();
+
+  const loader = document.getElementById("loader");
+  loader.style.display = "flex";
+
+  setTimeout(() => {
+    window.location.href = url;
+  }, 500);
+}
+</script>
 
 </body>
 </html>
