@@ -87,10 +87,58 @@
             color: #5f6368;
             font-size: 13px;
         }
+
+        /* Loading overlay */
+        #loading-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(241, 243, 244, 0.92);
+            z-index: 9999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid #dadce0;
+            border-top-color: #1a73e8;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 16px;
+            color: #202124;
+            font-weight: 500;
+        }
+
+        .loading-subtext {
+            font-size: 13px;
+            color: #5f6368;
+        }
     </style>
 </head>
 
 <body>
+
+<!-- Loading overlay shown while plagiarism analysis runs -->
+<div id="loading-overlay">
+    <div class="spinner"></div>
+    <div class="loading-text">Analyzing Submissions…</div>
+    <div class="loading-subtext">Downloading files and calculating similarity scores. This may take a moment.</div>
+</div>
 
 <div class="container">
     <a href="/dashboard" class="back-btn">← Back to Dashboard</a>
@@ -109,7 +157,7 @@
             <div class="assignment-title">
                 {{ a.title }}
             </div>
-            <a href="/submissions/{{ course_id }}/{{ a.id }}">
+            <a href="/submissions/{{ course_id }}/{{ a.id }}" onclick="showLoading()">
                 Check Plagiarism →
             </a>
         </div>
@@ -120,6 +168,12 @@
     </footer>
 
 </div>
+
+<script>
+function showLoading() {
+    document.getElementById("loading-overlay").classList.add("active");
+}
+</script>
 
 </body>
 </html>

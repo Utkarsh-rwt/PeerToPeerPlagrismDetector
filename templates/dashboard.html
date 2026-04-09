@@ -86,10 +86,58 @@
             font-size: 12px;
             margin-left: 10px;
         }
+
+        /* Loading overlay */
+        #loading-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(241, 243, 244, 0.92);
+            z-index: 9999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid #dadce0;
+            border-top-color: #1a73e8;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 16px;
+            color: #202124;
+            font-weight: 500;
+        }
+
+        .loading-subtext {
+            font-size: 13px;
+            color: #5f6368;
+        }
     </style>
 </head>
 
 <body>
+
+<!-- Loading overlay shown while assignments are fetched -->
+<div id="loading-overlay">
+    <div class="spinner"></div>
+    <div class="loading-text">Loading Assignments…</div>
+    <div class="loading-subtext">Fetching course data from Google Classroom.</div>
+</div>
 
 <div class="dashboard">
 
@@ -110,13 +158,19 @@
                 {{ course.name }}
                 <span class="badge">Active</span>
             </div>
-            <a href="/course/{{ course.id }}">
+            <a href="/course/{{ course.id }}" onclick="showLoading()">
                 View Assignments →
             </a>
         </div>
     {% endfor %}
 
 </div>
+
+<script>
+function showLoading() {
+    document.getElementById("loading-overlay").classList.add("active");
+}
+</script>
 
 </body>
 </html>
