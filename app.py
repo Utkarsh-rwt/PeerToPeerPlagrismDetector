@@ -107,11 +107,11 @@ def login_page():
 
 @app.route("/logintogoogle")
 def login():
-  Flow.from_client_secrets_file(
-    "/etc/secrets/client_secret.json",
-    scopes=SCOPES,
-    redirect_uri=request.url_root + "oauth2callback"
-)
+    flow = Flow.from_client_secrets_file(
+        "/etc/secrets/client_secret.json",
+        scopes=SCOPES,
+        redirect_uri=request.url_root + "oauth2callback"
+    )
 
     authorization_url, state = flow.authorization_url(
         access_type="offline",
@@ -123,11 +123,11 @@ def login():
 
 @app.route("/oauth2callback")
 def oauth2callback():
-  Flow.from_client_secrets_file(
-    "/etc/secrets/client_secret.json",
-    scopes=SCOPES,
-    redirect_uri=request.url_root + "oauth2callback"
-)
+    flow = Flow.from_client_secrets_file(
+        "/etc/secrets/client_secret.json",
+        scopes=SCOPES,
+        redirect_uri=request.url_root + "oauth2callback"
+    )
 
     flow.fetch_token(authorization_response=request.url)
 
@@ -141,7 +141,6 @@ def oauth2callback():
     }
 
     return redirect("/dashboard")
-
 @app.route("/dashboard")
 def dashboard():
     credentials = get_credentials()
